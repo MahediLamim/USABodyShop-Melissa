@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO: original site had a bare title and no description at all -->
+<title>USA Body Shop LLC | Collision Repair &amp; Auto Body in Melissa, TX</title>
+<meta name="description" content="USA Body Shop LLC provides collision repair, frame straightening, custom paint, and full mechanical service in Melissa, TX. Serving McKinney, Anna, Princeton, Prosper and Collin County. Insurance claims accepted. Free estimates — call 469-258-1552.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://usabodyshop.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="USA Body Shop LLC | Collision Repair &amp; Auto Body in Melissa, TX">
+<meta property="og:description" content="Collision repair, frame straightening, custom paint, and full mechanical service in Melissa, TX. Insurance claims accepted.">
+<meta property="og:url" content="https://usabodyshop.com/">
+<meta name="theme-color" content="#141A22">
+
+<!-- Inline favicon: no extra request, and fixes the missing-favicon gap -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23141A22'/><path d='M6 20l3-8h4l-1 3h3l-4 9zm12-9h8l-1 3h-5l-.4 1H24l-2 5h-8l1-3h5l.4-1H15z' fill='%23FF6A13'/></svg>">
+
+<style>
+/* ==========================================================================
+   USA Body Shop — brand stylesheet
+   Palette is defined once here; changing these vars rebrands the whole site.
+   ========================================================================== */
+
+:root {
+  /* Brand — warm */
+  --ink:        #141A22;  /* deep graphite — headers, footer */
+  --ink-soft:   #1F2731;
+  --ink-line:   #2E3946;
+  --accent:     #FF6A13;  /* signal orange — button fills, highlights */
+  --accent-lt:  #FF8A3D;
+  --accent-dk:  #DB5407;  /* hover fill */
+  --accent-txt: #B34606;  /* orange TEXT on light bg — 5.5:1, passes AA */
+  --accent-sft: #FFF1E7;
+
+  /* Brand — cool secondary (used sparingly, for mechanical services) */
+  --teal:       #0F7B8A;
+  --teal-dk:    #0A5F6B;
+  --teal-sft:   #E3F3F5;
+
+  --steel:      #4A5A6E;
+
+  /* Surfaces */
+  --bg:         #F7F8FA;
+  --card:       #FFFFFF;
+  --border:     #E3E7ED;
+
+  /* Type */
+  --text:       #10151C;
+  --muted:      #5A6675;
+  --on-dark:    #EEF1F5;
+  --on-dark-mt: #9DAAB9;
+
+  --radius:     14px;
+  --radius-sm:  9px;
+  --shadow:     0 1px 2px rgba(16,21,28,.06), 0 8px 24px rgba(16,21,28,.06);
+  --shadow-lg:  0 24px 60px rgba(16,21,28,.16);
+  --glow:       0 10px 26px rgba(255,106,19,.32);
+  --wrap:       1140px;
+
+  --ease:       cubic-bezier(.22,.68,.36,1);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 .5em; }
+h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); }
+h3 { font-size: 1.12rem; }
+p  { margin: 0 0 1rem; }
+img { max-width: 100%; display: block; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 22px; }
+
+.section { padding: 76px 0; }
+.section--tight { padding: 56px 0; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent-txt);
+  margin-bottom: .7rem;
+}
+.band .eyebrow { color: var(--accent-lt); }   /* on dark, the lighter orange reads better */
+
+.lede { font-size: 1.08rem; color: var(--muted); max-width: 62ch; }
+
+/* --- Keyframes ------------------------------------------------------------- */
+@keyframes riseIn  { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes drift   { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+@keyframes growBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* --- Scroll progress bar (progressive enhancement; hidden if unsupported) --- */
+.scroll-progress { display: none; }
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    z-index: 60;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-lt) 60%, var(--teal) 100%);
+    transform-origin: 0 50%;
+    animation: growBar linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+/* --- Buttons --------------------------------------------------------------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .85rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: .97rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+
+  /* The hover sheen is the element's OWN background layer, not a positioned child.
+     Backgrounds are always clipped to border-radius, so the sweep stays pill-shaped.
+     (An absolutely-positioned child was escaping the rounded clip inside the header,
+     because .site-header's backdrop-filter forces compositing and drops the clip.) */
+  background-image: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.40) 50%, transparent 70%);
+  background-repeat: no-repeat;
+  background-size: 250% 100%;
+  background-position: 100% 0;   /* sheen parked just off the left edge */
+
+  transition: transform .18s var(--ease), background-color .18s var(--ease),
+              border-color .18s var(--ease), box-shadow .22s var(--ease),
+              color .18s var(--ease), background-position .6s var(--ease);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  background-position: 0 0;      /* ...and sweeps out past the right edge */
+}
+/* Click / press feedback */
+.btn:active {
+  transform: translateY(0) scale(.96);
+  transition-duration: .07s;
+  box-shadow: none;
+}
+
+/* Dark text on orange = 6.1:1 contrast (white was only 2.9:1) */
+.btn--primary { background-color: var(--accent); color: var(--ink); }
+.btn--primary:hover { background-color: var(--accent-lt); box-shadow: var(--glow); }
+
+/* Outline button is transparent — a sheen would just look like a smear */
+.btn--ghost { border-color: rgba(255,255,255,.32); color: var(--on-dark); background-image: none; }
+.btn--ghost:hover { border-color: var(--accent); color: #fff; background-color: rgba(255,106,19,.12); }
+
+.btn--dark { background-color: var(--ink); color: #fff; }
+.btn--dark:hover { background-color: var(--ink-soft); }
+
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- Header ---------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(20,26,34,.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--ink-line);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 72px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+.logo svg { transition: transform .35s var(--ease); }
+.logo:hover svg { transform: rotate(-8deg) scale(1.08); }
+.logo span small {
+  display: block;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  color: var(--accent-lt);
+  text-transform: uppercase;
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  /* Vertical breathing room so the button's hover lift and glow aren't clipped.
+     Setting overflow-x also forces overflow-y to compute to `auto` (per spec, a
+     non-visible value on one axis promotes the other), which otherwise slices the
+     top off the pill button when it lifts. */
+  padding: 14px 0;
+}
+/* Horizontal scrolling is only needed once the links stop fitting */
+@media (max-width: 900px) {
+  .nav {
+    overflow-x: auto;        /* mobile: scrolls instead of needing a JS menu */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+}
+.nav a:not(.btn) {
+  position: relative;
+  color: var(--on-dark-mt);
+  text-decoration: none;
+  font-size: .93rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: .35rem 0;
+  transition: color .2s var(--ease);
+}
+/* Underline wipes in from the left */
+.nav a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 2px; width: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .28s var(--ease);
+}
+.nav a:not(.btn):hover { color: #fff; }
+.nav a:not(.btn):hover::after { transform: scaleX(1); }
+.nav .btn { padding: .6rem 1.1rem; font-size: .9rem; }
+
+/* --- Hero ------------------------------------------------------------------ */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(1100px 500px at 78% -10%, rgba(255,106,19,.22), transparent 60%),
+    radial-gradient(760px 420px at 8% 105%, rgba(15,123,138,.20), transparent 62%),
+    linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+  color: var(--on-dark);
+  padding: 84px 0 0;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero h1 { color: #fff; }
+.hero h1 em { font-style: normal; color: var(--accent-lt); }
+.hero p { color: var(--on-dark-mt); font-size: 1.1rem; max-width: 52ch; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.8rem; }
+
+/* Staggered entrance */
+.hero .eyebrow  { animation: riseIn .65s .04s both var(--ease); }
+.hero h1        { animation: riseIn .65s .14s both var(--ease); }
+.hero p         { animation: riseIn .65s .24s both var(--ease); }
+.hero-cta       { animation: riseIn .65s .34s both var(--ease); }
+.hero-media     { animation: riseIn .8s  .30s both var(--ease); }
+.trust-bar      { animation: fadeIn .9s  .55s both; }
+
+.trust-bar {
+  margin-top: 56px;
+  border-top: 1px solid var(--ink-line);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.trust-bar div {
+  position: relative;
+  padding: 22px 18px;
+  border-right: 1px solid var(--ink-line);
+  text-align: center;
+  transition: background .25s var(--ease);
+}
+.trust-bar div::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform .3s var(--ease);
+}
+.trust-bar div:hover { background: rgba(255,255,255,.04); }
+.trust-bar div:hover::before { transform: scaleX(1); }
+.trust-bar div:last-child { border-right: 0; }
+.trust-bar strong {
+  display: block;
+  color: #fff;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+.trust-bar span { font-size: .82rem; color: var(--on-dark-mt); }
+
+/* --- Photo slots ----------------------------------------------------------- */
+/* Placeholders for real photography. Replace each .photo with an <img>. */
+.photo {
+  position: relative;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 12px, transparent 12px 24px),
+    var(--ink-soft);
+  border: 1px dashed var(--ink-line);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  text-align: center;
+  padding: 24px;
+  color: var(--on-dark-mt);
+  aspect-ratio: 4 / 3;
+  transition: border-color .3s var(--ease), transform .3s var(--ease);
+}
+.photo:hover { border-color: var(--accent); transform: translateY(-3px); }
+.photo svg { opacity: .5; transition: opacity .3s var(--ease), transform .3s var(--ease); }
+.photo:hover svg { opacity: .9; transform: scale(1.08); }
+.photo b { color: var(--on-dark); font-size: .95rem; font-weight: 700; }
+.photo small { font-size: .78rem; max-width: 30ch; }
+.photo--light {
+  background:
+    repeating-linear-gradient(45deg, rgba(16,21,28,.025) 0 12px, transparent 12px 24px),
+    #EDF0F4;
+  border-color: var(--border);
+  color: var(--muted);
+}
+.photo--light b { color: var(--text); }
+.photo--tall { aspect-ratio: 3 / 4; }
+.photo--wide { aspect-ratio: 16 / 10; }
+
+/* --- Services -------------------------------------------------------------- */
+.grid-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  margin-top: 40px;
+}
+.service {
+  position: relative;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease);
+}
+/* Accent bar wipes across the top on hover */
+.service::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .32s var(--ease);
+}
+.service--mech::before { background: var(--teal); }
+.service:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: #D3DAE4;
+}
+.service:hover::before { transform: scaleX(1); }
+.service .icon {
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: var(--accent-sft);
+  color: var(--accent-txt);
+  margin-bottom: 16px;
+  transition: transform .3s var(--ease), background .25s var(--ease);
+}
+.service:hover .icon { transform: scale(1.1) rotate(-5deg); }
+.service:hover .icon { background: var(--accent); color: #fff; }
+/* Cool tint marks the mechanical services apart from body work */
+.service--mech .icon { background: var(--teal-sft); color: var(--teal-dk); }
+.service--mech:hover .icon { background: var(--teal); color: #fff; }
+.service h3 { margin-bottom: .35rem; }
+.service p { color: var(--muted); font-size: .95rem; margin: 0; }
+
+/* --- Split feature --------------------------------------------------------- */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.checks { list-style: none; padding: 0; margin: 1.4rem 0 0; }
+.checks li {
+  display: flex;
+  gap: .75rem;
+  align-items: flex-start;
+  padding: .55rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: transform .22s var(--ease);
+}
+.checks li:hover { transform: translateX(5px); }
+.checks li:last-child { border-bottom: 0; }
+.checks svg { flex: none; margin-top: 3px; color: var(--accent-txt); transition: transform .22s var(--ease); }
+.checks li:hover svg { transform: scale(1.18); }
+.checks strong { display: block; }
+.checks span { color: var(--muted); font-size: .93rem; }
+
+/* --- Work / gallery -------------------------------------------------------- */
+.band { background: var(--ink); color: var(--on-dark); }
+.band h2 { color: #fff; }
+.band .lede { color: var(--on-dark-mt); }
+
+.ba-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.ba-pair {
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius);
+  padding: 14px;
+  transition: border-color .28s var(--ease), transform .28s var(--ease);
+}
+.ba-pair:hover { border-color: var(--accent); transform: translateY(-4px); }
+.ba-pair .photo { aspect-ratio: 16/11; margin-bottom: 10px; }
+.ba-pair .photo:last-of-type { margin-bottom: 0; }
+.ba-tag {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .2rem .55rem;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+.ba-tag--before { background: rgba(157,170,185,.16); color: var(--on-dark-mt); }
+.ba-tag--after  { background: rgba(255,106,19,.18);  color: var(--accent-lt); }
+
+/* --- Reviews --------------------------------------------------------------- */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 36px;
+}
+.review-slot {
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  color: var(--muted);
+  transition: border-color .28s var(--ease), transform .28s var(--ease), box-shadow .28s var(--ease);
+}
+.review-slot:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.stars { color: var(--accent); letter-spacing: 2px; margin-bottom: .6rem; }
+.review-slot p { font-size: .95rem; font-style: italic; }
+.review-slot footer { font-size: .85rem; font-weight: 700; color: var(--text); font-style: normal; }
+
+/* --- Forms ----------------------------------------------------------------- */
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+.field { margin-bottom: 16px; }
+.field label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 700;
+  margin-bottom: .35rem;
+  transition: color .2s var(--ease);
+}
+.field:focus-within label { color: var(--accent-txt); }
+.field input, .field select, .field textarea {
+  width: 100%;
+  padding: .75rem .9rem;
+  font: inherit;
+  font-size: .95rem;
+  color: var(--text);
+  background: #FBFCFD;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  background: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255,106,19,.15);
+}
+.field textarea { min-height: 110px; resize: vertical; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field-note { font-size: .8rem; color: var(--muted); margin: -8px 0 16px; }
+.form-card .btn { width: 100%; justify-content: center; margin-top: 6px; }
+
+/* --- Contact --------------------------------------------------------------- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.contact-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.contact-list li {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: transform .22s var(--ease);
+}
+.contact-list li:hover { transform: translateX(5px); }
+.contact-list li:last-child { border-bottom: 0; }
+.contact-list .icon {
+  flex: none;
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  border-radius: 11px;
+  background: var(--accent-sft);
+  color: var(--accent-txt);
+  transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease);
+}
+.contact-list li:hover .icon { background: var(--accent); color: #fff; transform: scale(1.08) rotate(-5deg); }
+.contact-list b { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.contact-list a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: color .2s var(--ease); }
+.contact-list a:hover { color: var(--accent-txt); }
+
+/* Inline text links on light backgrounds */
+.link-accent {
+  color: var(--accent-txt);
+  font-weight: 700;
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .28s var(--ease);
+}
+.link-accent:hover { background-size: 100% 2px; }
+
+/* --- Inventory ------------------------------------------------------------- */
+.inventory-empty {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px 32px;
+  text-align: center;
+  margin-top: 36px;
+  transition: border-color .28s var(--ease), box-shadow .28s var(--ease);
+}
+.inventory-empty:hover { border-color: #D3DAE4; box-shadow: var(--shadow); }
+.inventory-empty .icon { color: var(--teal); margin-bottom: 14px; }
+
+/* --- CTA strip ------------------------------------------------------------- */
+.cta-strip {
+  background: linear-gradient(100deg, var(--accent-dk) 0%, var(--accent) 45%, var(--accent-lt) 100%);
+  background-size: 220% 100%;
+  animation: drift 9s ease-in-out infinite alternate;
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 44px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-lg);
+}
+.cta-strip h2 { color: #fff; margin-bottom: .25rem; }
+.cta-strip p { color: rgba(255,255,255,.94); margin: 0; }
+/* background-color, not the shorthand — the shorthand would wipe out the sheen layer */
+.cta-strip .btn { background-color: #fff; color: var(--ink); }
+.cta-strip .btn:hover { background-color: var(--ink); color: #fff; }
+
+/* --- Footer ---------------------------------------------------------------- */
+.site-footer {
+  background: var(--ink);
+  color: var(--on-dark-mt);
+  padding: 56px 0 28px;
+  font-size: .92rem;
+  border-top: 3px solid var(--accent);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--ink-line);
+}
+.site-footer h4 {
+  color: #fff;
+  font-size: .82rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li { margin-bottom: .5rem; }
+.site-footer a {
+  color: var(--on-dark-mt);
+  text-decoration: none;
+  display: inline-block;
+  transition: color .2s var(--ease), transform .2s var(--ease);
+}
+.site-footer a:hover { color: var(--accent-lt); transform: translateX(4px); }
+.site-footer .logo:hover { transform: none; }
+.footer-bottom {
+  padding-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: .85rem;
+}
+
+/* --- Responsive ------------------------------------------------------------ */
+@media (max-width: 900px) {
+  .hero-grid, .split, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero { padding-top: 56px; }
+  .hero-media { order: -1; }
+  .trust-bar { grid-template-columns: 1fr 1fr; }
+  .trust-bar div:nth-child(2) { border-right: 0; }
+  .trust-bar div:nth-child(1), .trust-bar div:nth-child(2) { border-bottom: 1px solid var(--ink-line); }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .section { padding: 56px 0; }
+  .cta-strip { padding: 32px 26px; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .field-row { grid-template-columns: 1fr; }
+  .form-card { padding: 24px 20px; }
+  .logo span small { display: none; }
+}
+
+/* Respect users who ask for less motion — kill movement, keep the color states */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: .01ms !important;
+  }
+  .btn:hover, .service:hover, .photo:hover, .ba-pair:hover,
+  .review-slot:hover, .checks li:hover, .contact-list li:hover { transform: none; }
+  .service::before, .trust-bar div::before { transform: scaleX(1); }
+  .scroll-progress { display: none; }
+}
+</style>
+
+<!-- Local-business structured data: helps Google show hours, phone, and map results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoBodyShop",
+  "name": "USA Body Shop LLC",
+  "telephone": "+1-469-258-1552",
+  "email": "usabodyshopnorthdallas@gmail.com",
+  "url": "https://usabodyshop.com/",
+  "areaServed": ["Melissa, TX", "McKinney, TX", "Anna, TX", "Princeton, TX", "Prosper, TX", "Celina, TX"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "5604 N McDonald St, Ste B",
+    "addressLocality": "Melissa",
+    "addressRegion": "TX",
+    "postalCode": "75454",
+    "addressCountry": "US"
+  }
+}
+</script>
+</head>
+
+<body>
+
+<!-- Scroll progress indicator (CSS-only; hidden in browsers without scroll timelines) -->
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="USA Body Shop LLC home">
+      <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#FF6A13"/>
+        <path d="M6 20l3-8h4l-1 3h3l-4 9zm12-9h8l-1 3h-5l-.4 1H24l-2 5h-8l1-3h5l.4-1H15z" fill="#141A22"/>
+      </svg>
+      <span>USA BODY SHOP<small>Melissa, TX</small></span>
+    </a>
+
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#work">Our Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#inventory">Cars for Sale</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--primary" href="tel:+14692581552">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+          <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
+        </svg>
+        469-258-1552
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Collision &amp; Auto Body — Melissa, TX</span>
+          <h1>Your car, back to <em>factory condition</em>.</h1>
+          <p>From major collision damage to custom paint and full mechanical work, we handle the repair and the insurance paperwork — so you get your vehicle back right, and without the runaround.</p>
+          <div class="hero-cta">
+            <a class="btn btn--primary" href="#appointment">Get a Free Estimate</a>
+            <a class="btn btn--ghost" href="tel:+14692581552">Call 469-258-1552</a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <!-- PHOTO SLOT 1 -->
+          <div class="photo photo--wide">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.4"/><path d="M8 6l1.5-2h5L16 6"/>
+            </svg>
+            <b>Hero photo</b>
+            <small>Wide shot of the shop front or a finished repair in the bay</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-bar">
+        <div><strong>Insurance Claims</strong><span>All major carriers accepted</span></div>
+        <div><strong>Free Estimates</strong><span>No cost, no obligation</span></div>
+        <div><strong>Collision to Mechanical</strong><span>One shop, every repair</span></div>
+        <div><strong>Locally Owned</strong><span>Melissa &amp; McKinney</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <span class="eyebrow">What We Do</span>
+      <h2>Every repair under one roof</h2>
+      <p class="lede">Body work and mechanical service in the same shop — you don't need a second stop or a second estimate.</p>
+
+      <div class="grid-services">
+
+        <article class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 17h18M5 17l1.4-5.2A2 2 0 0 1 8.3 10h7.4a2 2 0 0 1 1.9 1.4L19 17"/><circle cx="7" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/><path d="m13 3-3 5h4l-3 4"/>
+            </svg>
+          </div>
+          <h3>Collision Repair</h3>
+          <p>Full structural and cosmetic repair after an accident, from minor dents to major impact damage.</p>
+        </article>
+
+        <article class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 6v12M20 6v12M4 12h16"/><path d="m8 9 4 3-4 3M16 9l-4 3 4 3"/>
+            </svg>
+          </div>
+          <h3>Frame Straightening</h3>
+          <p>Precision measuring and pulling to bring a bent frame back to manufacturer specification.</p>
+        </article>
+
+        <article class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 3h8v6H6zM10 9v4"/><rect x="7" y="13" width="6" height="8" rx="2"/><path d="M16 5h4v5a3 3 0 0 1-3 3h-1"/>
+            </svg>
+          </div>
+          <h3>Custom &amp; Factory Paint</h3>
+          <p>Computer-matched factory finishes and full custom paint work with a clean, even final coat.</p>
+        </article>
+
+        <article class="service service--mech">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 13h3l2-4 3 8 2.5-6 1.8 4h5.7"/><circle cx="12" cy="12" r="9.2"/>
+            </svg>
+          </div>
+          <h3>Engine Diagnostics</h3>
+          <p>Computerized diagnostics to find the actual cause of a warning light — not just clear the code.</p>
+        </article>
+
+        <article class="service service--mech">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><path d="M7 10v4a3 3 0 0 0 3 3h4M17 14v-4a3 3 0 0 0-3-3h-4"/>
+            </svg>
+          </div>
+          <h3>Transmission Service</h3>
+          <p>Fluid service, diagnosis, and repair for rough shifting, slipping, and transmission warning lights.</p>
+        </article>
+
+        <article class="service service--mech">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/><path d="M12 3v5.4M12 15.6V21M3 12h5.4M15.6 12H21"/>
+            </svg>
+          </div>
+          <h3>Brake Service</h3>
+          <p>Pads, rotors, calipers, and brake lines — inspected and replaced before they become a safety issue.</p>
+        </article>
+
+        <article class="service service--mech">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 4v16M6 8h5M6 16h5"/><path d="M14 6a4 4 0 0 1 0 12"/><circle cx="18" cy="12" r="2.4"/>
+            </svg>
+          </div>
+          <h3>Suspension Repair</h3>
+          <p>Shocks, struts, and steering components fixed to correct pulling, bouncing, and uneven tire wear.</p>
+        </article>
+
+        <article class="service service--mech">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3v18M3 12h18"/><path d="m6.2 6.2 11.6 11.6M17.8 6.2 6.2 17.8"/><circle cx="12" cy="12" r="2.6"/>
+            </svg>
+          </div>
+          <h3>A/C &amp; Heating</h3>
+          <p>HVAC diagnosis, recharge, and component repair so your system holds up through a Texas summer.</p>
+        </article>
+
+        <article class="service service--mech">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M13 2 4.5 13H11l-1 9 8.5-11H12z"/>
+            </svg>
+          </div>
+          <h3>Electrical Diagnostics</h3>
+          <p>Batteries, alternators, starters, and wiring faults traced down properly instead of guessed at.</p>
+        </article>
+
+        <article class="service service--mech">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 1 5.4-5.4l-2.6 2.6"/>
+            </svg>
+          </div>
+          <h3>General Maintenance</h3>
+          <p>Oil changes, fluids, filters, and scheduled service to keep small problems from getting expensive.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY US ================= -->
+  <section class="section" id="why" style="background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Why USA Body Shop</span>
+        <h2>We deal with the insurance company, not you</h2>
+        <p class="lede">Most people come to us right after the worst part of their week. Our job is to make the repair the easy part.</p>
+
+        <ul class="checks">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+            <div><strong>We handle your claim directly</strong><span>Send us the photos and the claim number — we work with your adjuster from there.</span></div>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+            <div><strong>Estimates before work starts</strong><span>You approve the number first. No surprise line items at pickup.</span></div>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+            <div><strong>Body and mechanical in one shop</strong><span>If the collision damaged something underneath, we fix that too — no second shop.</span></div>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+            <div><strong>Straight answers on timing</strong><span>We tell you what the repair actually takes, including parts wait times.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <!-- PHOTO SLOT 2 -->
+        <div class="photo photo--light photo--tall">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="9" cy="8" r="3.4"/><path d="M3 20a6 6 0 0 1 12 0M16 6.5a3.5 3.5 0 0 1 0 7M18 20a6 6 0 0 0-3-5.2"/>
+          </svg>
+          <b>Team photo</b>
+          <small>Owner or crew in front of the shop — this is the single highest-trust photo on the page</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OUR WORK ================= -->
+  <section class="section band" id="work">
+    <div class="wrap">
+      <span class="eyebrow">Our Work</span>
+      <h2>Before and after</h2>
+      <p class="lede">The most convincing thing on this page will be your own repair photos. Three pairs is enough to start.</p>
+
+      <div class="ba-grid">
+        <div class="ba-pair">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <div class="photo">
+            <b>Damage photo</b><small>Front-end collision, as it arrived</small>
+          </div>
+          <span class="ba-tag ba-tag--after">After</span>
+          <div class="photo">
+            <b>Repaired photo</b><small>Same angle, same lighting</small>
+          </div>
+        </div>
+
+        <div class="ba-pair">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <div class="photo">
+            <b>Damage photo</b><small>Panel damage or deep scratch work</small>
+          </div>
+          <span class="ba-tag ba-tag--after">After</span>
+          <div class="photo">
+            <b>Repaired photo</b><small>Matched paint, finished panel</small>
+          </div>
+        </div>
+
+        <div class="ba-pair">
+          <span class="ba-tag ba-tag--before">Before</span>
+          <div class="photo">
+            <b>Damage photo</b><small>Frame or structural repair</small>
+          </div>
+          <span class="ba-tag ba-tag--after">After</span>
+          <div class="photo">
+            <b>Repaired photo</b><small>Completed, back to spec</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= APPOINTMENT ================= -->
+  <section class="section" id="appointment">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Free Estimate</span>
+        <h2>Send us photos, get a number back</h2>
+        <p class="lede">Fill this out with a few pictures of the damage and we'll get back to you with an estimate and the soonest date we can take the vehicle in.</p>
+
+        <ul class="checks">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+            <div><strong>Prefer to talk?</strong><span>Call <a href="tel:+14692581552" class="link-accent">469-258-1552</a> and we'll walk through it.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <form class="form-card" action="#" method="POST" enctype="multipart/form-data">
+          <!-- TODO: point action= at the real form backend before launch -->
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="vehicle">Vehicle (year, make, model)</label>
+              <input type="text" id="vehicle" name="vehicle" placeholder="2019 Toyota Camry" required>
+            </div>
+            <div class="field">
+              <label for="service">Service needed</label>
+              <select id="service" name="service">
+                <option>Collision repair</option>
+                <option>Frame straightening</option>
+                <option>Paint work</option>
+                <option>Engine / diagnostics</option>
+                <option>Transmission</option>
+                <option>Brakes</option>
+                <option>Suspension</option>
+                <option>A/C &amp; heating</option>
+                <option>Electrical</option>
+                <option>General maintenance</option>
+                <option>Something else</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="insurance">Insurance claim? (optional)</label>
+            <input type="text" id="insurance" name="insurance" placeholder="Carrier and claim number, if you have one">
+          </div>
+
+          <div class="field">
+            <label for="details">Describe the damage</label>
+            <textarea id="details" name="details" placeholder="What happened, and what you'd like us to look at."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="photos">Photos of the damage</label>
+            <input type="file" id="photos" name="photos" accept="image/*" multiple>
+          </div>
+          <p class="field-note">Clear photos from a few angles get you a much more accurate estimate.</p>
+
+          <button class="btn btn--primary" type="submit">Request My Free Estimate</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REVIEWS ================= -->
+  <section class="section" id="reviews" style="background:#fff; border-top:1px solid var(--border);">
+    <div class="wrap">
+      <span class="eyebrow">Reviews</span>
+      <h2>What customers say</h2>
+      <p class="lede">These slots are intentionally empty — they get filled with real verified Google reviews, pulled from your actual business profile.</p>
+
+      <div class="reviews-grid">
+        <article class="review-slot">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p>Real customer review goes here.</p>
+          <footer>— Customer name, Google</footer>
+        </article>
+        <article class="review-slot">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p>Real customer review goes here.</p>
+          <footer>— Customer name, Google</footer>
+        </article>
+        <article class="review-slot">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p>Real customer review goes here.</p>
+          <footer>— Customer name, Google</footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INVENTORY ================= -->
+  <section class="section" id="inventory">
+    <div class="wrap">
+      <span class="eyebrow">Inventory</span>
+      <h2>Cars for sale</h2>
+      <p class="lede">We occasionally have clean, repaired vehicles available for sale.</p>
+
+      <div class="inventory-empty">
+        <div class="icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 16h18M5 16l1.5-5.5A2.2 2.2 0 0 1 8.6 9h6.8a2.2 2.2 0 0 1 2.1 1.5L19 16"/><circle cx="7.5" cy="18" r="1.7"/><circle cx="16.5" cy="18" r="1.7"/>
+          </svg>
+        </div>
+        <h3>No vehicles listed right now</h3>
+        <p class="lede" style="margin:0 auto;">Give us a call at <a href="tel:+14692581552" class="link-accent">469-258-1552</a> and we'll let you know what's coming available.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="section" id="contact" style="background:#fff; border-top:1px solid var(--border);">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Come by the shop</h2>
+        <p class="lede">Call, email, or stop in — estimates are free either way.</p>
+
+        <ul class="contact-list">
+          <li>
+            <div class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            </div>
+            <div><b>Phone</b><a href="tel:+14692581552">469-258-1552</a></div>
+          </li>
+          <li>
+            <div class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+            </div>
+            <div><b>Email</b><a href="mailto:usabodyshopnorthdallas@gmail.com" style="font-size:.95rem;">usabodyshopnorthdallas@gmail.com</a></div>
+          </li>
+          <li>
+            <div class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10.5c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10.5" r="2.8"/></svg>
+            </div>
+            <div><b>Address</b><a href="https://maps.google.com/?q=5604+N+McDonald+St+Ste+B+Melissa+TX+75454" target="_blank" rel="noopener">5604 N McDonald St, Ste B<br>Melissa, TX 75454</a></div>
+          </li>
+          <li>
+            <div class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg>
+            </div>
+            <div><b>Hours</b><a href="#contact">[ Mon–Fri 00–00 · Sat 00–00 ]</a></div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <!-- MAP SLOT: drop in the Google Maps embed iframe here -->
+        <div class="photo photo--light" style="aspect-ratio:1/1;">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 4 3 6.5v14L9 18l6 2.5 6-2.5v-14L15 6.5 9 4zM9 4v14M15 6.5v14"/>
+          </svg>
+          <b>Google Maps embed</b>
+          <small>Paste the shop's Maps embed iframe here once the address is confirmed</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="section--tight">
+    <div class="wrap">
+      <div class="cta-strip">
+        <div>
+          <h2>Damaged vehicle? Let's take a look.</h2>
+          <p>Free estimates, insurance claims handled, and straight answers on what it'll take.</p>
+        </div>
+        <a class="btn" href="tel:+14692581552">Call 469-258-1552</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="#top" style="margin-bottom:14px;">
+          <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="7" fill="#FF6A13"/>
+            <path d="M6 20l3-8h4l-1 3h3l-4 9zm12-9h8l-1 3h-5l-.4 1H24l-2 5h-8l1-3h5l.4-1H15z" fill="#141A22"/>
+          </svg>
+          <span>USA BODY SHOP<small>Melissa, TX</small></span>
+        </a>
+        <p style="max-width:34ch;">Collision repair, custom paint, and full mechanical service for Melissa, McKinney, and Collin County drivers. Insurance claims welcome.</p>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Collision Repair</a></li>
+          <li><a href="#services">Frame Straightening</a></li>
+          <li><a href="#services">Custom Paint</a></li>
+          <li><a href="#services">Brakes &amp; Suspension</a></li>
+          <li><a href="#services">Engine Diagnostics</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+14692581552">469-258-1552</a></li>
+          <li><a href="mailto:usabodyshopnorthdallas@gmail.com">Email the shop</a></li>
+          <li><a href="#appointment">Free estimate</a></li>
+          <li><a href="#inventory">Cars for sale</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 USA Body Shop LLC. All rights reserved.</span>
+      <span>Melissa, Texas</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
